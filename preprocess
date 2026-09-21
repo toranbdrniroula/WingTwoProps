@@ -1,0 +1,13 @@
+#!/bin/sh
+cd ${0%/*} || exit 1
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+blockMesh 2>&1 | tee log.blockMesh
+surfaceFeatureExtract
+decomposePar -force
+mpirun -np $(getNumberOfProcessors) snappyHexMesh -overwrite -parallel 2>&1 | tee log.shm
+restore0Dir
+reconstructParMesh -constant -mergeTol 1e-6 2>&1 | tee log.reconstructParMesh
+rm -rf proc*
+createPatch -overwrite
+renumberMesh -overwrite 2>&1 | tee log.renumberMesh
+checkMesh -allGeometry -allTopology -writeSets vtk 2>&1 | tee log.checkMesh

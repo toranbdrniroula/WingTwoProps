@@ -1,0 +1,28 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "0/include";
+    object      initialConditions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+/* Ambient air variables */
+UInf				(20 0 0);	// m/s
+pInf				0;		// m^2/s^2  (p/rho)
+TInf				298;		// K
+rhoInf				1.225;		// kg/m^3
+muVal 				1.82e-5; 	// kg/(m.s)
+nuVal				1.5e-5;		// m^2/s
+
+/* spalartAllmaras turbulence model */
+nuTildaVal			4.5e-5;		// m^2/s     nuTilda = 3*nu
+nutVal			    3.15e-6;		// m^2/s   nut = 0.07*nuTilda

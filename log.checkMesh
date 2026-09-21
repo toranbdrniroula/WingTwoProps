@@ -1,0 +1,176 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2606                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _481094f-20260618 OPENFOAM=2606 version=2606
+Arch   : "LSB;label=32;scalar=64"
+Exec   : checkMesh -allGeometry -allTopology -writeSets vtk
+Date   : Sep 11 2026
+Time   : 21:55:34
+Host   : waverider
+PID    : 125180
+I/O    : uncollated
+Case   : /home/toran/openFoamCases/wingTwoProps1
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+memory pool : not available
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+
+--> FOAM Warning : allowSystemOperations : Allowing user-supplied system call operations.
+                   This can be a security risk if running untrusted cases
+                   through e.g. 'coded' on-the-fly-compilation functionality.
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Check mesh...
+    Enabling all (cell, face, edge, point) topology checks.
+    Enabling all geometry checks.
+    Reconstructing and writing vtk representation of all faceSets and cellSets.
+
+Time = 0
+
+Mesh stats 
+    points:           6033951
+    faces:            17147010
+    internal faces:   16820117
+    cells:            5558234
+    faces per cell:   6.11113655884
+    boundary patches: 11
+    point zones:      1
+    face zones:       2
+    cell zones:       2
+
+Overall number of cells of each type:
+    hexahedra:     5162591
+    prisms:        73944
+    wedges:        4682
+    pyramids:      0
+    tet wedges:    4464
+    tetrahedra:    3
+    polyhedra:     312550
+    Breakdown of polyhedra by number of faces:
+        faces   number of cells
+            4   6292
+            5   8383
+            6   62578
+            7   67882
+            8   6034
+            9   115076
+           10   115
+           11   62
+           12   40029
+           13   8
+           14   18
+           15   5875
+           17   5
+           18   193
+
+Checking topology...
+    Boundary definition OK.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Topological cell zip-up check OK.
+    Number of identical duplicate faces (baffle faces): 6485
+    Face-face connectivity OK.
+  <<Writing 12970 faces with non-standard edge connectivity to set edgeFaces
+   *Number of regions: 3
+    The mesh has multiple regions which are not connected by any face.
+  <<Writing region information to "0/cellToRegion"
+  <<Writing region 0 (point connected) with 3775033 cells to cellSet region0
+  <<Writing region 1 (point connected) with 892383 cells to cellSet region1
+  <<Writing region 2 (fully disconnected) with 890818 cells to cellSet region2
+  <<Writing 6657 points that are in multiple regions to set multiRegionPoints
+
+Checking patch topology for multiply connected surfaces...
+                   Patch    Faces   Points  Surface topology  Bounding box
+                farField     3600     3721  ok (non-closed singly connected) (-4 -3 0) (8 3 3.00056141201)
+                   inlet      450      496  ok (non-closed singly connected) (-4 -3 0) (-4 3 3.00042973531)
+                  outlet      750      816  ok (non-closed singly connected) (8 -3 0) (8 3 3.00001700839)
+                symmetry    12613    13225  ok (non-closed singly connected) (-4 -3 0) (8 3 0)
+             propellerIn    67867    71818      ok (closed singly connected) (-0.0773883628607 -0.0124278720185 0.38912400664) (-0.042534793719 0.0124273049692 0.690876007078)
+            propellerOut    68012    71967      ok (closed singly connected) (-0.0774302065774 -0.0124270995533 0.929123997726) (-0.042531755572 0.0124279474343 1.23088002106)
+                    wing   110069   111388  ok (non-closed singly connected) (3.5832451951e-06 -0.00999870673278 0) (0.236019805074 0.018683728011 1.45006422417)
+               PROP1AMI1    15851    16011      ok (closed singly connected) (-0.0900302597515 -0.249991646034 0.289674097032) (-0.0299941912902 0.249990390837 0.790244731436)
+               PROP1AMI2    15851    16011      ok (closed singly connected) (-0.0900302597515 -0.249991646034 0.289674097032) (-0.0299941912902 0.249990390837 0.790244731436)
+               PROP2AMI1    15915    16078      ok (closed singly connected) (-0.0900257874404 -0.249997745372 0.829591111635) (-0.0299936954287 0.249997055347 1.33036301218)
+               PROP2AMI2    15915    16078      ok (closed singly connected) (-0.0900257874404 -0.249997745372 0.829591111635) (-0.0299936954287 0.249997055347 1.33036301218)
+                    ".*"   326893   330335  multiply connected (shared edge) (-4 -3 0) (8 3 3.00056141201)
+
+Detected 13141 bad edges (possibly relevant for finite-area)
+
+Checking faceZone topology for multiply connected surfaces...
+                FaceZone    Faces   Points                  Surface topology Bounding box
+                    ami1    31702    32022      ok (closed singly connected) (-0.0900302597515 -0.249991646034 0.289674097032) (-0.0299941912902 0.249990390837 0.790244731436)
+                    ami2    31830    25499  multiply connected (shared edge) (-0.0900257874404 -0.249997745372 0.829591111635) (-0.0299936954287 0.249997055347 1.33036301218)
+  <<Writing 6657 conflicting points to set nonManifoldPoints
+
+Checking basic cellZone addressing...
+                CellZone        Cells       Points       VolumeBoundingBox
+                 rotor1       890818      1007228 0.0117177489544 (-0.0900302597515 -0.249991646034 0.289674097032) (-0.0299941912902 0.249990390837 0.790244731436)
+                 rotor2       892383      1009248 0.0117183729251 (-0.0900257874404 -0.249997745372 0.829591111635) (-0.0299936954287 0.249997055347 1.33036301218)
+
+Checking basic pointZone addressing...
+               PointZone  PointsBoundingBox
+            frozenPoints       0(1e+150 1e+150 1e+150) (-1e+150 -1e+150 -1e+150)
+
+Checking geometry...
+    Overall domain bounding box (-4 -3 0) (8 3 3.00056141201)
+    Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
+    Mesh has 3 solution (non-empty) directions (1 1 1)
+    Boundary openness (8.12553462397e-17 -3.15820685088e-17 -1.87555112423e-16) OK.
+    Max cell openness = 1.27487548956e-15 OK.
+    Max aspect ratio = 60.1609383521 OK.
+    Minimum face area = 1.47849427154e-09. Maximum face area = 0.040249912752.  Face area magnitudes OK.
+    Min volume = 4.34521703907e-13. Max volume = 0.00804960972413.  Total volume = 215.993322243.  Cell volumes OK.
+    Mesh non-orthogonality Max: 74.9208037248 average: 7.74957210641
+   *Number of severely non-orthogonal (> 70 degrees) faces: 16.
+    Non-orthogonality check OK.
+  <<Writing 16 non-orthogonal faces to set nonOrthoFaces
+    Face pyramids OK.
+    Max skewness = 3.99377667697 OK.
+    Coupled point location match (average 0) OK.
+    Face tets OK.
+   *Edges too small, min/max edge length = 4.1820201041e-06 0.200829699952, number too small: 46
+  <<Writing 46 points on short edges to set shortEdges
+  <<Writing 50910 near (closer than 1.37478496059e-05 apart) points to set nearPoints
+   *There are 6122 faces with concave angles between consecutive edges. Max concave angle = 69.9742785865 degrees.
+  <<Writing 6122 faces with concave angles to set concaveFaces
+    Face flatness (1 = flat, 0 = butterfly) : min = 0.621271565833  average = 0.999897887809
+   *There are 70 faces with ratio between projected and actual area < 0.8
+    Minimum ratio (minimum flatness, maximum warpage) = 0.621271565833
+  <<Writing 70 warped faces to set warpedFaces
+    Cell determinant (wellposedness) : minimum: 3.32588169202e-06 average: 1.2046836481
+ ***Cells with small determinant (< 0.001) found, number of cells: 4223
+  <<Writing 4223 under-determined cells to set cellDeterminant
+ ***Concave cells (using face planes) found, number of cells: 128749
+  <<Writing 128749 concave cells to set concaveCells
+    Face interpolation weight : minimum: 0.0496545040427 average: 0.477481642249
+ ***Faces with small interpolation weight (< 0.05) found, number of faces: 3
+  <<Writing 3 faces with low interpolation weights to set lowWeightFaces
+    Face volume ratio : minimum: 0.0142764015714 average: 0.900464830368
+    Face volume ratio check OK.
+Calculating AMI weights between owner patch: PROP1AMI1 and neighbour patch: PROP1AMI2
+AMI: Creating AMI for source:PROP1AMI1 and target:PROP1AMI2
+AMI: Patch source faces: 15851
+AMI: Patch target faces: 15851
+AMI: Patch source sum(weights) min:1 max:1.11557625253 average:1.00098241012
+AMI: Patch target sum(weights) min:1 max:1.11557625253 average:1.00098241012
+Calculating AMI weights between owner patch: PROP2AMI1 and neighbour patch: PROP2AMI2
+AMI: Creating AMI for source:PROP2AMI1 and target:PROP2AMI2
+AMI: Patch source faces: 15915
+AMI: Patch target faces: 15915
+AMI: Patch source sum(weights) min:1 max:1.09090098769 average:1.00089807394
+AMI: Patch target sum(weights) min:1 max:1.09090098769 average:1.00089807394
+
+Failed 3 mesh checks.
+
+End
+

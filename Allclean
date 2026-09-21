@@ -1,0 +1,13 @@
+#!/bin/sh
+cd ${0%/*} || exit 1
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+rm -rf processor*
+for d in ./[0-9]*; do
+[ -d "$d" ] || continue
+[ "$(basename "$d")" = "0" ] && continue
+[ "$(basename "$d")" = "0.orig" ] && continue
+rm -rf "$d"
+done
+rm -rf constant/polyMesh
+rm -f log.*
+rm -rf postProcessing

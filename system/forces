@@ -1,0 +1,50 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+propForce
+{
+    type			forces;
+
+    libs			("libforces.so");
+
+    writeControl	timeStep;
+    timeInterval	0.001;
+
+    log				true;
+
+    patches			("propeller");
+	rho				rhoInf; 
+	rhoInf			1.225; 
+
+	pRef			0;
+    CofR			(-0.05 0 0.54);    
+    pitchAxis		(1 0 0);
+}
+
+wingForce
+{
+    type			forces;
+
+    libs			("libforces.so");
+
+    writeControl	timeStep;
+    timeInterval	0.001;
+
+    log				true;
+
+    patches			("wing");
+    rho				rhoInf;     
+    rhoInf			1.225;  
+
+	pRef			0;
+    CofR			(0.059 0 0.725);   
+    pitchAxis		(0 0 1);
+}
+
+
+// ************************************************************************* //

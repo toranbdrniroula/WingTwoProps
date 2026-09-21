@@ -1,0 +1,81 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createPatchDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+pointSync false;
+
+patches
+(
+    {
+        name            PROP1AMI1;
+        patchInfo
+        {
+            type            cyclicAMI;
+            matchTolerance  0.0001;
+            neighbourPatch  PROP1AMI2;
+            transform       noOrdering;
+			AMIMethod		faceAreaWeightAMI;
+			lowWeightCorrection 0.2;
+        }
+        constructFrom patches;
+        patches (ami1);
+    }
+
+    {
+        name            PROP1AMI2;
+        patchInfo
+        {
+            type            cyclicAMI;
+            matchTolerance  0.0001;
+            neighbourPatch  PROP1AMI1;
+            transform       noOrdering;
+			AMIMethod		faceAreaWeightAMI;
+            lowWeightCorrection 0.2;			
+        }
+        constructFrom patches;
+        patches (ami1_slave);
+    }
+    {
+        name            PROP2AMI1;
+        patchInfo
+        {
+            type            cyclicAMI;
+            matchTolerance  0.0001;
+            neighbourPatch  PROP2AMI2;
+            transform       noOrdering;
+			AMIMethod		faceAreaWeightAMI;
+			lowWeightCorrection 0.2;
+        }
+        constructFrom patches;
+        patches (ami2);
+    }
+
+    {
+        name            PROP2AMI2;
+        patchInfo
+        {
+            type            cyclicAMI;
+            matchTolerance  0.0001;
+            neighbourPatch  PROP2AMI1;
+            transform       noOrdering;
+			AMIMethod		faceAreaWeightAMI;
+            lowWeightCorrection 0.2;			
+        }
+        constructFrom patches;
+        patches (ami2_slave);
+    }
+);
+
+// ************************************************************************* //

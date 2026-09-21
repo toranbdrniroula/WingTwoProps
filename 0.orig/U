@@ -1,0 +1,91 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include        "include/initialConditions"
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform $UInf;
+
+boundaryField
+{
+    //#includeEtc "caseDicts/setConstraintTypes"
+
+    inlet
+    {
+        type            fixedValue;
+        value           uniform $UInf;
+    }
+
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      $internalField;
+        value           $internalField;
+    }
+
+    farField
+    {
+        type            zeroGradient;
+    }
+
+    propellerIn
+    {
+        type            movingWallVelocity;
+        value           uniform (0 0 0);
+    }
+
+    propellerOut
+    {
+        type            movingWallVelocity;
+        value           uniform (0 0 0);
+    }
+	
+	wing
+    {
+        type            noSlip;
+    }
+	
+	symmetry
+	{
+		type            symmetryPlane;	
+	}
+	
+	PROP1AMI1
+    {
+        type            cyclicAMI;
+        value           uniform $UInf;
+    }
+    PROP1AMI2
+    {
+        type            cyclicAMI;
+        value           uniform $UInf;
+    }
+	PROP2AMI1
+    {
+        type            cyclicAMI;
+        value           uniform $UInf;
+    }
+    PROP2AMI2
+    {
+        type            cyclicAMI;
+        value           uniform $UInf;
+    }
+}
+
+
+// ************************************************************************* //

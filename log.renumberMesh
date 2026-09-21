@@ -1,0 +1,60 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2606                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _481094f-20260618 OPENFOAM=2606 version=2606
+Arch   : "LSB;label=32;scalar=64"
+Exec   : renumberMesh -overwrite
+Date   : Sep 11 2026
+Time   : 21:54:48
+Host   : waverider
+PID    : 125178
+I/O    : uncollated
+Case   : /home/toran/openFoamCases/wingTwoProps1
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+memory pool : not available
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+
+--> FOAM Warning : allowSystemOperations : Allowing user-supplied system call operations.
+                   This can be a security risk if running untrusted cases
+                   through e.g. 'coded' on-the-fly-compilation functionality.
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Mesh region0 size: 5558234
+Before renumbering
+    band           : 5299373
+    profile        : 560176856283
+
+Using renumber-method: CuthillMcKee [default]
+
+Reading fields
+    volScalarField: nuTilda nut p
+    volVectorField: U
+
+After renumbering
+    band           : 105548
+    profile        : 296297634732
+
+Writing mesh to "constant"
+
+Timings:
+    read mesh   : 22.107469593
+    read fields : 0.204686706
+    decompose   : 0
+    cell-cells  : 0
+    renumber    : 2.633091256
+    write       : 11.540955624
+TotalTime = 46.063751944 s
+
+ExecutionTime = 46.43 s  ClockTime = 46 s
+
+End
+
